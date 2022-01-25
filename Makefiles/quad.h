@@ -1,0 +1,1 @@
+double tetra(double c);

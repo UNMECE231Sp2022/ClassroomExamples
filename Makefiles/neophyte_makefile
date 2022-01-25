@@ -1,0 +1,20 @@
+GPP=g++ -std=c++17
+FLAGS= -lm -lpthread -lcuda
+
+all: many_maths
+
+many_maths: math_function.o q_function.o test_math.o
+	$(GPP) $(FLAGS) math_function.o q_function.o test_math.o -o many_maths
+
+math_function.o: math_function.c maths.h
+	gcc -c math_function.c
+
+q_function.o: q_function.c quad.h
+	gcc -c q_function.c
+
+test_math.o: test_math.c maths.h quad.h
+	gcc -c test_math.c
+
+clean:
+	-rm *.o many_maths
+
