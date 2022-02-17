@@ -4,6 +4,7 @@ struct _rect {
 	float width;
 };
 */
+#include <iostream>
 
 class Rectangle {
 	private:
@@ -11,15 +12,37 @@ class Rectangle {
 		float _width;
 
 	public:
+		// Constructors
 		Rectangle();
 		Rectangle(float length, float width);
 		Rectangle(const Rectangle &r);
 
+		// Destructor
 		~Rectangle();
 
+		// Getters
 		float length() const;
 		float width() const;
 
+		// Setters
 		void set_length(float length);
 		void set_width(float width);
+
+		// General methods
+		float area() const;
+		float perimeter() const;
+		Rectangle add(const Rectangle &r) const;
+		void print() const;
+
+		Rectangle &operator=(const Rectangle &r);
+		Rectangle operator+(const Rectangle &r);
+		friend std::ostream &operator<<(std::ostream &out, const Rectangle &r);
+
+		// pre ++
+		Rectangle operator++(int x);
+		// post ++
+		Rectangle operator++();
+
 };
+
+
