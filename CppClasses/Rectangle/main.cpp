@@ -30,8 +30,8 @@ int main() {
 	std::cout << '\t';
 	std::cout << r5 + r4 << '\n'; // 13.4, 18.4
 
-	std::cout << (r++) << '\n';
-	std::cout << (++r) << '\n';
+	std::cout << '\t' << (++r) << '\n';
+	std::cout << '\t' << (r++) << '\n';
 	
 	return 0;
 }

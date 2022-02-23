@@ -77,19 +77,35 @@ std::ostream &operator<<(std::ostream &out, const Rectangle &r) {
 	return out;
 }
 
+// c = ++a + b;
 // pre ++
-Rectangle Rectangle::operator++(int x) {
-	Rectangle temp = *this;
-	(*this)++;
-	return temp;
-}
-
-// post ++
-Rectangle Rectangle::operator++() {
+Rectangle &Rectangle::operator++() {
 	_width += 1;
 	_length += 1;
 	return *this;
 }
 
+// c = a++ + b;
+// post ++
+Rectangle Rectangle::operator++(int x) {
+	Rectangle temp = *this;
+	++(*this);
+	return temp;
+}
 
+/*
+// pre --
+Rectangle &Rectangle::operator--() {
+	_width -= 1;
+	_length -= 1;
+	return *this;
+}
+
+// post --
+Rectangle Rectangle::operator--(int x) {
+	Rectangle temp = *this;
+	--(*this);
+	return temp;
+}
+*/
 

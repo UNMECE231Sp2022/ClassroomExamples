@@ -39,9 +39,9 @@ class Rectangle {
 		friend std::ostream &operator<<(std::ostream &out, const Rectangle &r);
 
 		// pre ++
-		Rectangle operator++(int x);
+		Rectangle &operator++();
 		// post ++
-		Rectangle operator++();
+		Rectangle operator++(int x);
 
 };
 
