@@ -12,12 +12,15 @@ int main() {
 	}
 
 	std::cout << '\t';
-	for (size_t i=0; i<y.size(); ++i) {
-		std::cout << y[i] << ' ';
-	}
-	std::cout << std::endl;
+	y.print();
 
 	Array z = y;
+	z.print();
+
+	y[0] = 11;
+	Array t(4);
+	t = y;
+	t.print();
 
 	return 0;
 }
