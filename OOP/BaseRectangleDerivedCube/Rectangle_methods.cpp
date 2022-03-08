@@ -3,8 +3,8 @@
 Rectangle::Rectangle() : _length{1.0f}, _width{1.0f} {}
 
 Rectangle::Rectangle(float length, float width) {
-	_length = length;
-	_width = width;
+	set_length(length);
+	set_width(width);
 }
 
 Rectangle::Rectangle(const Rectangle &r) : _length{r._length}, _width{r._width} {}
@@ -20,9 +20,8 @@ float Rectangle::width() const {
 }
 
 void Rectangle::set_length(float length) {
-	if (length > 0.0f) {
-		_length = length;
-	}
+	assert(length > 0.0f);
+	_length = length;
 }
 
 void Rectangle::set_width(float width) {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "rectangle.hpp"
+#include "cube.hpp"
 
 int main() {
 	Rectangle r;
@@ -10,7 +11,7 @@ int main() {
 
 	Rectangle r3(r);
 	std::cout << '\t' << r3.length() << ' ' << r3.width() << '\n';
-	r3.set_length(-9.1f);
+	//r3.set_length(-9.1f);
 	std::cout << '\t' << r3.length() << ' ' << r3.width() << "\n\n";
 	r3.set_width(6.6f);
 	//std::cout << r3.length() << ' ' << r3.width() << '\n';
@@ -29,6 +30,22 @@ int main() {
 	// Rectangle r6 = r5 + r4
 	std::cout << '\t';
 	std::cout << r5 + r4 << '\n'; // 13.4, 18.4
+
+	Cube c1, c2(2, 3, 4);
+	Cube c3(c1);
+	c3.set_length(5);
+	c3.set_width(7);
+	c3.set_depth(1);
+
+	c1.print();
+	c2.print();
+	c3.print();
+
+	Cube c5 = c2;
+	std::cout << c5 << '\n';
+
+	c2 = c5 * 3.0f;
+	std::cout << c2 << '\n';
 
 	return 0;
 }

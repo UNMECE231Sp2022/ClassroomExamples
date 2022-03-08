@@ -1,5 +1,7 @@
-#include <iostream>
+#ifndef BASE_RECTANGLE_HPP
+#define BASE_RECTANGLE_HPP
 
+#include <iostream>
 class Rectangle {
 	protected:
 		float _length;
@@ -34,3 +36,4 @@ class Rectangle {
 };
 
 
+#endif // BASE_RECTANGLE_HPP
