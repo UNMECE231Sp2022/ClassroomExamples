@@ -1,3 +1,5 @@
+#ifndef BASE_TRIANGLE_HPP
+#define BASE_TRIANGLE_HPP
 #include <iostream>
 
 class Triangle {
@@ -20,8 +22,16 @@ class Triangle {
 		float area() const;
 		float perimeter() const;
 
-		void set_base(float base);
-		void set_height(float height);
+		virtual void set_base(float base);
+		virtual void set_height(float height);
 
 		void print() const;
+
+		Triangle &operator=(const Triangle &t);
+		friend std::ostream &operator<<(std::ostream &out, const Triangle &t);
+
+		bool operator==(const Triangle &t);
+		bool operator!=(const Triangle &t);
 };
+
+#endif //BASE_TRIANGLE_HPP

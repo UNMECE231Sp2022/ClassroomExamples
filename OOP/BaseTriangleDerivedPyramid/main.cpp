@@ -1,5 +1,6 @@
 #include <iostream>
 #include "triangle.hpp"
+#include "shape3d.hpp"
 
 int main() {
 	Triangle t1;
@@ -11,6 +12,17 @@ int main() {
 	t1.print();
 	t2.print();
 	t3.print();
+
+	t1 = t3;
+	std::cout << t1 << '\n';
+
+	if (t1 == t3) {
+		std::cout << "t1 and t3 are the same!\n";
+	}
+
+	if (t2 != t3) {
+		std::cout << "t2 and t3 are not the same!\n";
+	}
 
 	return 0;
 }

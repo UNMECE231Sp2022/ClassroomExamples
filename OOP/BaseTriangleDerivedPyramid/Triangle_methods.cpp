@@ -58,6 +58,34 @@ void Triangle::calc_perimeter() {
 	_perimeter = base() + hyp + hyp;
 }
 
+Triangle &Triangle::operator=(const Triangle &t) {
+	if (this == &t) {
+		return *this;
+	}
+	_base = t._base;
+	_height = t._height;
+	_area = t._area;
+	_perimeter = t._perimeter;
+
+	return *this;
+}
+
+std::ostream &operator<<(std::ostream &out, const Triangle &t) {
+	out << t.base() << ' ' << t.height() << ' ';
+	out << t._area << ' ' << t._perimeter;
+	return out;
+}
+
+bool Triangle::operator==(const Triangle &t) {
+	return (base() == t.base()) && (height() == t.height());
+}
+
+bool Triangle::operator!=(const Triangle &t) {
+	return !(*this == t);
+	//return (base() != t.base()) || (height() != t.height());
+}
+
+
 
 
 
