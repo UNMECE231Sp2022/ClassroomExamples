@@ -3,7 +3,7 @@
 #include <iostream>
 
 class Triangle {
-	private:
+	protected:
 		float _base;
 		float _height;
 		float _area;

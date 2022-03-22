@@ -1,6 +1,7 @@
 #include <iostream>
 #include "triangle.hpp"
 #include "shape3d.hpp"
+#include "pyramid.hpp"
 
 int main() {
 	Triangle t1;
@@ -23,6 +24,21 @@ int main() {
 	if (t2 != t3) {
 		std::cout << "t2 and t3 are not the same!\n";
 	}
+
+	Pyramid p1;
+	Pyramid p2(2, 3, 4);
+	Pyramid p3(p1);
+
+	std::cout << p1 << " || " << p2 << '\n';
+	std::cout << p3 << '\n';
+
+	p3 = p2;
+	std::cout << p3 << '\n';
+
+	p3.set_base(9);
+	p3.set_height(4);
+	p3.set_depth(6);
+	std::cout << p3 << '\n';
 
 	return 0;
 }
