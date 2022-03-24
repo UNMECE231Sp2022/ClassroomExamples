@@ -34,11 +34,11 @@ class List {
 			}
 		}
 
-		T &front() const {
+		T &front() {
 			return _front->value;
 		}
 		
-		T &back() const {
+		T &back() {
 			return _back->value;
 		}
 
@@ -52,11 +52,82 @@ class List {
 			//return (_size == 0) && (_front == nullptr) && (_back == nullptr);
 		}
 
-		void push_front(T data);
-		void pop_front();
+		void push_front(T data) {
+			Node *new_node = new Node;
+			new_node->value = data;
 
-		void push_back(T data);
-		void pop_back();
+			if (empty()) {
+				new_node->next = nullptr;
+				_back = new_node;
+			}
+			else {
+				new_node->next = _front;
+			}
+			_front = new_node;
+			_size += 1;
+		}
+
+		void pop_front() {
+			if (empty()) {
+				return;
+			}
+
+			Node *node_to_delete = _front;
+
+			if (_front->next == nullptr) {
+				_front = nullptr;
+				_back = nullptr;
+			}
+			else {
+				_front = _front->next;
+			}
+
+			delete node_to_delete;
+			_size -= 1;
+		}
+
+		void push_back(T data) {
+			Node *new_node = new Node;
+			new_node->value = data;
+			new_node->next = nullptr;
+
+			if (empty()) {
+				_front = new_node;
+			}
+			else {
+				_back->next = new_node;
+			}
+
+			_back = new_node;
+			_size += 1;
+		}
+
+		void pop_back() {
+			Node *node_to_delete = _back;
+
+			if (_front->next == nullptr) {
+				_front = nullptr;
+				_back = nullptr;
+				_size -= 1;
+			}
+			else {
+				Node *new_back = _front;
+				while (new_back->next != _back) {
+					new_back = new_back->next;
+				}
+				new_back->next = nullptr;
+				_back = new_back;
+			}
+			delete node_to_delete;
+		}
+
+		void print() const {
+			Node *temp;
+			for (temp = _front; temp != nullptr; temp = temp=temp->next) {
+				std::cout << temp->value << ' ';
+			}
+			std::cout << '\n';
+		}
 };
 
 
