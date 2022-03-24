@@ -12,6 +12,7 @@ void print_vector(const std::vector<T> &v) {
 }
 
 /*
+ * std::pair
 template <typename T1, typename T2>
 struct _pair {
 	T1 first;
