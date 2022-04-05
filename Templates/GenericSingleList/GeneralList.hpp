@@ -1,5 +1,4 @@
 #include <iostream>
-
 template <typename T>
 class List {
 	public:
@@ -123,28 +122,56 @@ class List {
 
 		void print() const {
 			Node *temp;
-			for (temp = _front; temp != nullptr; temp = temp=temp->next) {
+			for (temp = _front; temp != nullptr; temp = temp->next) {
 				std::cout << temp->value << ' ';
 			}
 			std::cout << '\n';
 		}
+
+		template <typename Z>
+		friend std::ostream &operator<<(std::ostream &out, const List<Z> &l);
+
+		// lhs == rhs
+		template <typename R>
+		friend bool operator==(const List<R> &lhs, const List<R> &rhs);
+
+		// lhs == rhs
+		template <typename S>
+		friend bool operator!=(const List<S> &lhs, const List<S> &rhs);
+
+		bool operator==(const List<T> &l) {
+			if (size() != l.size()) {
+				return false;
+			}
+			Node *temp;
+			Node *l_temp;
+			/*
+			 * for (temp = _front, l_temp = l._front; 
+			 * 		temp != nullptr && l_temp != nullptr; 
+			 * 		temp = temp->next, l_temp = l_temp->next) {
+			 */
+			 for (temp = _front, l_temp = l._front; 
+					 temp != nullptr; 
+					 temp = temp->next, l_temp = l_temp->next) {
+				if (temp->value != l_temp->value) {
+					return false;
+				}
+			 }
+			 return true;
+		}
+
+		bool operator!=(const List<T> &l) {
+			return !(*this == l);
+		}
 };
 
+template <typename Z>
+std::ostream &operator<<(std::ostream &out, const List<Z> &l) {
+	for (auto temp = l._front; temp != nullptr; temp = temp->next) {
+		out << temp->value << ' ';
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	return out;
+}
 
 
