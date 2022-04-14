@@ -11,19 +11,13 @@ void print_vector(const std::vector<int> &v) {
 	std::cout << '\n';
 }
 
-void swap(int &a, int &b) {
-	int temp = a;
-	a = b;
-	b = temp;
-}
-
 void insertion_sort(std::vector<int> &v) {
 	int v_size = v.size();
 	for (int i=1; i<v_size; ++i) {
 		for (int j=0; j<i+1; ++j) {
 
 			if (v[i] < v[j]) {
-				swap(v[i], v[j]);
+				std::swap(v[i], v[j]);
 			}
 
 		}
@@ -36,7 +30,7 @@ int meta_insertion_sort(std::vector<int> &v) {
 	for (int i=1; i<v_size; ++i) {
 		for (int j=0; j<i+1; ++j) {
 			if (v[i] < v[j]) {
-				swap(v[i], v[j]);
+				std::swap(v[i], v[j]);
 				count++;
 			}
 
@@ -89,7 +83,7 @@ int main() {
 		std::cout << "Iter " << i << "/" << dur << '\n';
 		i++;
 	}
-	std::cout << sum << '\n';
+	//std::cout << sum << '\n';
 	std::cout << (sum / (float) dur) << '\n';
 
 	return 0;
