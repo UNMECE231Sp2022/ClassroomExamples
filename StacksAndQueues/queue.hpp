@@ -13,7 +13,7 @@ class Queue {
 
 	public:
 		Queue() : _size{0} {}
-		Queue(Q value) : _size{1}, _data(value) {}
+		Queue(Q value) : _size{1}, _data(1, value) {}
 		Queue(const Queue &que) : _size{que.size()}, _data{que._data} {}
 		
 		size_t size() const {
@@ -41,7 +41,7 @@ class Queue {
 		}
 
 		bool empty() const {
-			_data.empty();
+			return _data.empty();
 		}
 
 		void print() const {
@@ -62,8 +62,21 @@ class Queue {
 			return *this;
 		}
 
-		bool operator==(const Queue &rhs);
-		bool operator!=(const Queue &rhs);
+		bool operator==(const Queue &rhs) {
+			if (size() != rhs.size()) {
+				return false;
+			}
+			for (int i=0; i<size(); ++i) {
+				if (_data[i] != rhs._data[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		bool operator!=(const Queue &rhs) {
+			return !(*this == rhs);
+		}
 
 		template <typename Q2>
 		friend std::ostream &operator<<(std::ostream &out, const Queue<Q2> &q);
